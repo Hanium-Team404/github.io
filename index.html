@@ -46,7 +46,7 @@
       backdrop-filter: blur(20px) saturate(180%);
       -webkit-backdrop-filter: blur(20px) saturate(180%);
       border-bottom: 1px solid rgba(91,141,184,0.15);
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center;
       padding: 0 48px; height: 64px;
       transition: box-shadow 0.3s, background 0.3s;
     }
@@ -58,7 +58,12 @@
       display: flex; align-items: center; gap: 10px;
       text-decoration: none; font-size: 1.15rem; font-weight: 800; color: #fff;
     }
-    .nav-links { display: flex; align-items: center; gap: 20px; list-style: none; margin-left: auto; }
+    .nav-logo span { color: #fff; }
+    .nav-logo img { height: 28px; width: auto; max-width: 160px; display: block; filter: brightness(0) invert(1); opacity: 0.9; }
+    .nav-links {
+      position: absolute; right: 48px; top: 50%; transform: translateY(-50%);
+      display: flex; align-items: center; gap: 20px; list-style: none;
+    }
     .nav-links a {
       text-decoration: none; font-size: 0.875rem; font-weight: 600;
       color: rgba(176,197,218,0.75); transition: color 0.2s;
@@ -638,6 +643,7 @@
 <nav id="main-nav">
   <a href="#" class="nav-logo">
     <img src="image/roomlog_logo.png" alt="RoomLog" height="28" />
+    <span>RoomLog</span>
   </a>
   <ul class="nav-links">
     <li><a href="#features">Features</a></li>
@@ -987,10 +993,10 @@
         </div>
         <div class="tech-pills">
           <span class="tech-pill">FastAPI</span>
+          <span class="tech-pill">3D Vision</span>
+          <span class="tech-pill">Computer Vision</span>
           <span class="tech-pill">Open3D TSDF</span>
-          <span class="tech-pill">GPT Vision</span>
-          <span class="tech-pill">SAM 3</span>
-          <span class="tech-pill">gpt-image-1</span>
+          <span class="tech-pill">Docker</span>
           <span class="tech-pill">AWS S3</span>
         </div>
       </div>

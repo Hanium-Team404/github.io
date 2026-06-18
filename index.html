@@ -42,31 +42,46 @@
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(255,255,255,0.88);
-      backdrop-filter: blur(16px) saturate(180%);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
-      border-bottom: 1px solid rgba(221,228,236,0.6);
+      background: rgba(10, 20, 32, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(91,141,184,0.15);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 48px; height: 64px;
-      transition: box-shadow 0.3s;
+      transition: box-shadow 0.3s, background 0.3s;
     }
-    nav.scrolled { box-shadow: 0 4px 24px rgba(61,107,143,0.10); }
+    nav.scrolled {
+      background: rgba(10, 20, 32, 0.95);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    }
     .nav-logo {
       display: flex; align-items: center; gap: 10px;
-      text-decoration: none; font-size: 1.15rem; font-weight: 800; color: var(--primary);
+      text-decoration: none; font-size: 1.15rem; font-weight: 800; color: #fff;
     }
-    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links { display: flex; align-items: center; gap: 20px; list-style: none; margin-left: auto; }
     .nav-links a {
       text-decoration: none; font-size: 0.875rem; font-weight: 600;
-      color: var(--text-muted); transition: color 0.2s;
+      color: rgba(176,197,218,0.75); transition: color 0.2s;
+      position: relative; padding-bottom: 3px;
     }
-    .nav-links a:hover { color: var(--primary); }
+    .nav-links a:not(.nav-github)::after {
+      content: '';
+      position: absolute; bottom: -2px; left: 0; right: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #5B8DB8, #4A9B7F);
+      border-radius: 1px;
+      transition: right 0.25s ease;
+    }
+    .nav-links a:not(.nav-github):hover { color: #fff; }
+    .nav-links a:not(.nav-github):hover::after { right: 0; }
+    .nav-links a.active { color: #93C5FD !important; }
+    .nav-links a.active::after { right: 0 !important; }
     .nav-github {
       display: inline-flex; align-items: center; gap: 7px;
       padding: 8px 18px; background: var(--primary); color: #fff !important;
       border-radius: 10px; font-size: 0.85rem !important; font-weight: 700 !important;
       transition: background 0.2s, transform 0.15s !important;
-      box-shadow: 0 2px 8px rgba(61,107,143,0.25);
+      box-shadow: 0 2px 8px rgba(61,107,143,0.35);
     }
     .nav-github:hover { background: var(--primary-dark) !important; transform: translateY(-1px) !important; }
 
@@ -489,7 +504,7 @@
     .footer-logo { margin-bottom: 10px; }
     .footer-logo img { filter: brightness(0) invert(1); opacity: 0.85; }
     .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.45); margin-top: 8px; }
-    .footer-links { display: flex; gap: 32px; }
+    .footer-links { display: flex; gap: 32px; margin-left: auto; }
     .footer-links a { font-size: 0.875rem; color: rgba(255,255,255,0.55); text-decoration: none; font-weight: 500; transition: color 0.2s; }
     .footer-links a:hover { color: #fff; }
     .footer-copy {
@@ -625,10 +640,10 @@
     <img src="image/roomlog_logo.png" alt="RoomLog" height="28" />
   </a>
   <ul class="nav-links">
-    <li><a href="#features">기능</a></li>
-    <li><a href="#pipeline">기술</a></li>
-    <li><a href="#demo">데모</a></li>
-    <li><a href="#team">팀</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#pipeline">Tech</a></li>
+    <li><a href="#demo">Demo</a></li>
+    <li><a href="#team">Team</a></li>
     <li>
       <a href="https://github.com/DGU-Team404" target="_blank" rel="noopener" class="nav-github">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -1059,10 +1074,10 @@
       <p>LiDAR 기반 주거 공간 기록 · 하자 분쟁 해결 플랫폼</p>
     </div>
     <nav class="footer-links">
-      <a href="#features">기능</a>
-      <a href="#pipeline">기술</a>
-      <a href="#demo">데모</a>
-      <a href="#team">팀</a>
+      <a href="#features">Features</a>
+      <a href="#pipeline">Tech</a>
+      <a href="#demo">Demo</a>
+      <a href="#team">Team</a>
       <a href="https://github.com/DGU-Team404" target="_blank" rel="noopener">GitHub</a>
     </nav>
   </div>
@@ -1070,10 +1085,24 @@
 </footer>
 
 <script>
-  // Nav shadow on scroll
+  // Nav shadow on scroll + scrollspy
   const nav = document.getElementById('main-nav');
+  const navLinks = document.querySelectorAll('.nav-links a:not(.nav-github)');
+  const sections = ['problem', 'demo', 'features', 'pipeline', 'team'].map(id => document.getElementById(id));
+
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
+
+    // scrollspy: find which section is in view
+    const scrollY = window.scrollY + 80;
+    let current = '';
+    sections.forEach(sec => {
+      if (sec && sec.offsetTop <= scrollY) current = sec.id;
+    });
+
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
   }, { passive: true });
 
   // Scroll reveal
